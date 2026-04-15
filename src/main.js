@@ -22,7 +22,7 @@ const distributorAbi = [
 
 const defaultConfig = {
   projectId: import.meta.env.VITE_REOWN_PROJECT_ID || "",
-  rpcUrl: "https://binance.llamarpc.com",
+  rpcUrl: "https://bsc-mainnet.public.blastapi.io",
   token: "",
   weights: JSON.stringify(
     {
@@ -353,7 +353,7 @@ function parseWeights() {
 async function buildDistributionPlan() {
   const account = requireConnectedAccount();
   const tokenAddress = getAddress(els.tokenInput.value.trim());
-  const distributor = getAddress(els.distributorInput.value.trim());
+  const distributor = getAddress(DISTRIBUTOR_ADDRESS);
   const weights = parseWeights();
   const rpcProvider = new JsonRpcProvider(els.rpcUrlInput.value.trim(), CHAIN_ID);
   const token = new Contract(tokenAddress, erc20Abi, rpcProvider);

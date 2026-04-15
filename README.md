@@ -10,7 +10,7 @@
 ## 你的合约
 
 - 合约地址: `0x501Ac36B6BbDB1e54D5A070C11DDE08D19f63274`（前端写死，不可编辑，可点击跳转 BscScan）
-- 默认 RPC: `https://binance.llamarpc.com`
+- 默认 RPC: `https://bsc-mainnet.public.blastapi.io`
 - 默认链: `BNB Smart Chain` (`chainId = 56`)
 
 ## 分配逻辑
