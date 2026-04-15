@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BatchDistributor Tool</title>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="panel panel-accent">
+        <p class="eyebrow">BNB Chain Batch Tool</p>
+        <h1>WalletConnect 批量分发工具</h1>
+        <p class="muted">
+          扫码连接钱包后，可直接在手机里确认 <code>approve</code> 和
+          <code>batchTransfer</code>。页面会保存你的配置，WalletConnect 会尽量复用连接。
+        </p>
+
+        <div class="status-grid">
+          <div class="status-card">
+            <span>钱包</span>
+            <div class="copy-row">
+              <strong id="walletAddress">未连接</strong>
+              <button id="copyWalletButton" class="mini ghost" type="button">复制</button>
+            </div>
+          </div>
+          <div class="status-card">
+            <span>链</span>
+            <strong id="chainName">BNB Smart Chain</strong>
+          </div>
+          <div class="status-card">
+            <span>代币余额</span>
+            <strong id="tokenBalance">-</strong>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="connectButton" class="primary">连接钱包</button>
+          <button id="refreshQrButton" class="ghost">刷新二维码</button>
+          <button id="disconnectButton" class="ghost">断开连接</button>
+        </div>
+
+        <div class="qr-block">
+          <div id="qrPlaceholder" class="qr-placeholder">等待生成二维码</div>
+          <canvas id="qrCanvas" hidden></canvas>
+          <p id="sessionHint" class="small muted">
+            如果钱包会话还有效，刷新后可能自动恢复；如果钱包端断开或会话过期，需要重新扫码。
+          </p>
+        </div>
+      </aside>
+
+      <main class="panel">
+        <section class="section">
+          <div class="section-head">
+            <h2>基础配置</h2>
+            <button id="saveConfigButton" class="ghost">保存配置</button>
+          </div>
+
+          <label>
+            <span>WalletConnect Project ID</span>
+            <input id="projectIdInput" placeholder="默认读取 VITE_REOWN_PROJECT_ID，也可手动填写" />
+          </label>
+
+          <label>
+            <span>RPC URL</span>
+            <input id="rpcUrlInput" value="https://binance.llamarpc.com" />
+          </label>
+
+          <label>
+            <span>合约地址</span>
+            <div class="readonly-field">
+              <code id="distributorAddressText">0x501Ac36B6BbDB1e54D5A070C11DDE08D19f63274</code>
+              <a
+                id="distributorLink"
+                href="https://bscscan.com/address/0x501Ac36B6BbDB1e54D5A070C11DDE08D19f63274"
+                target="_blank"
+                rel="noreferrer"
+              >
+                打开 BscScan
+              </a>
+            </div>
+          </label>
+
+          <label>
+            <span>Token 地址</span>
+            <input id="tokenInput" placeholder="0x..." />
+          </label>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>分发对象</h2>
+            <button id="previewButton" class="ghost">预览分配</button>
+          </div>
+
+          <label>
+            <span>权重对象 JSON</span>
+            <textarea id="weightsInput" rows="10" spellcheck="false">{
+  "0x1111111111111111111111111111111111111111": 1000,
+  "0x2222222222222222222222222222222222222222": 2000
+}</textarea>
+          </label>
+
+          <div class="summary-grid">
+            <div>
+              <span>总权重</span>
+              <strong id="weightTotal">-</strong>
+            </div>
+            <div>
+              <span>可分配余额</span>
+              <strong id="distributionBalance">-</strong>
+            </div>
+            <div>
+              <span>本次分发总额</span>
+              <strong id="distributionTotal">-</strong>
+            </div>
+            <div>
+              <span>余数</span>
+              <strong id="distributionRemainder">-</strong>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>地址</th>
+                  <th>权重</th>
+                  <th>分配数量</th>
+                </tr>
+              </thead>
+              <tbody id="previewBody">
+                <tr>
+                  <td colspan="3" class="muted">还没有预览结果</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <h2>操作</h2>
+          </div>
+
+          <div class="button-row">
+            <button id="approveButton" class="primary">Approve 无限额度</button>
+            <button id="batchTransferButton" class="primary">执行 BatchTransfer</button>
+            <button id="refreshBalanceButton" class="ghost">刷新余额</button>
+          </div>
+
+          <div id="messageBox" class="message-box muted">
+            等待操作。连接钱包后可先点“预览分配”，确认无误再发送交易。
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
