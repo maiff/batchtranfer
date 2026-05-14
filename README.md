@@ -9,7 +9,7 @@
 
 ## 你的合约
 
-- 合约地址: `0x666666C0264E4e56d3D7f28AEd0232705388C1FB`（前端写死，不可编辑，可点击跳转 BscScan）
+- 合约地址: `0x8888c3fbb742fa4e254b7db615f5eb5eb5c877a0`（前端写死，不可编辑，可点击跳转 BscScan）
 - 默认 RPC: `https://bsc-mainnet.public.blastapi.io`
 - 默认链: `BNB Smart Chain` (`chainId = 56`)
 

